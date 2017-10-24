@@ -1,9 +1,11 @@
-﻿using System;
+﻿using Dapper.Contrib.Extensions;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Tvol.Data
 {
+    [Table(nameof(Sale))]
     public class Sale
     {
         public static readonly string CREATE_TABLE =

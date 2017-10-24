@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dapper.Contrib.Extensions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace Tvol.Data
 {
+    [Table(nameof(Regression))]
     public class Regression
     {
         public static readonly string CREATE_TABLE =
@@ -27,8 +29,6 @@ FOREIGN KEY (Species, Product) REFERENCES TreeProfile ON DELETE CASCADE
         public string Species { get; set; } = "";
 
         public int Product { get; set; } = 0;
-
-        public TreeProfile Profile { get; set; }
 
         public double DBHMin { get; set; } = 0.0;
 

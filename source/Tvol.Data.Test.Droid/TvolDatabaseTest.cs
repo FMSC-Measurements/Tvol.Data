@@ -24,7 +24,6 @@ namespace Tvol.Data.Test
         [Fact]
         public void CreateTest()
         {
-            
             var db = new TvolDatabase(testCreatePath);
 
             db.Create();
