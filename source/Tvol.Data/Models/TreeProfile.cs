@@ -20,5 +20,10 @@ PRIMARY KEY (Species, Product)
         public string Species { get; set; } = "";
 
         public int Product { get; set; } = 0;
+
+        public override string ToString()
+        {
+            return $"Sp:{Species} Prod:{Product}";
+        }
     }
 }

@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Tvol.Data.Util;
 
 namespace Tvol.Data
 {
     [Table(nameof(Tree))]
-    public class Tree
+    public class Tree : INPC_Base
     {
         public static readonly string CREATE_TABLE =
 @"CREATE TABLE Tree (
@@ -19,33 +20,56 @@ DBH REAL,
 Height REAL,
 FOREIGN KEY (Species, Product) REFERENCES TreeProfile
 );";
+        private string _species = "";
+        private int _product = 0;
+        private double _dbh = 0.0;
+        private double _height = 0.0;
 
-        public string Species { get; set; } = "";
+        [Key]
+        public int TreeID { get; set; }
 
-        public int Product { get; set; } = 0;
-
-        public double DBH { get; set; } = 0.0;
-
-        public double Height { get; set; } = 0.0;
-
-        TreeProfile _profile;
-        public TreeProfile Profile
+        public string Species
         {
-            get { return _profile; }
-            set
-            {
-                _profile = value;
-                OnProfileChanged();
-            }
+            get { return _species; }
+            set { SetValue(ref _species, value); }
         }
 
-        private void OnProfileChanged()
+        public int Product
         {
-            if(Profile != null)
-            {
-                //Species = Profile.Species;
-                //Product = Profile.Product;
-            }
+            get { return _product; }
+            set { SetValue(ref _product, value); }
         }
+
+        public double DBH
+        {
+            get { return _dbh; }
+            set { SetValue(ref _dbh, value); }
+        }
+
+        public double Height
+        {
+            get { return _height; }
+            set { SetValue(ref _height, value); }
+        }
+
+        //TreeProfile _profile;
+        //public TreeProfile Profile
+        //{
+        //    get { return _profile; }
+        //    set
+        //    {
+        //        _profile = value;
+        //        OnProfileChanged();
+        //    }
+        //}
+
+        //private void OnProfileChanged()
+        //{
+        //    if(Profile != null)
+        //    {
+        //        Species = Profile.Species;
+        //        Product = Profile.Product;
+        //    }
+        //}
     }
 }
