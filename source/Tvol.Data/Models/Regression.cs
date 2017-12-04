@@ -41,6 +41,8 @@ namespace Tvol.Data
 
         public int Product { get; set; } = 0;
 
+        public string LiveDead { get; set; }
+
         public double DBHMin { get; set; } = 0.0;
 
         public double DBHMax { get; set; } = 0.0;

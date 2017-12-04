@@ -16,7 +16,7 @@ namespace Tvol.Data
 Species TEXT DEFAULT '',
 Product INTEGER DEFAULT -1,
 LiveDead TEXT DEFAULT '',
-PRIMARY KEY (Species, Product)
+PRIMARY KEY (Species, Product, LiveDead)
 );";
         private string _species = "";
         private int _product = 0;
@@ -45,7 +45,7 @@ PRIMARY KEY (Species, Product)
 
         public override string ToString()
         {
-            return $"Sp:{Species} Prod:{Product}";
+            return $"Sp:{Species} Prod:{Product} LiveDead:{LiveDead}";
         }
     }
 }
