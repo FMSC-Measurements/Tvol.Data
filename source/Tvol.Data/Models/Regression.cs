@@ -7,24 +7,35 @@ using System.Threading.Tasks;
 
 namespace Tvol.Data
 {
+    public static class RegressionModel
+    {
+        public const string LINEAR = "Linear";
+        public const string QUADRATIC = "Quadratic";
+        public const string LOG = "Log";
+        public const string POWER = "Power";
+    }
+
     [Table(nameof(Regression))]
     public class Regression
     {
         public static readonly string CREATE_TABLE =
 @"CREATE TABLE Regression (
-RegressionID INTEGER PRIMARY KEY AUTOINCREMENT,
-Species TEXT,
-Product INTEGER,
-DBHMin REAL,
-DBHMax REAL,
-RegressionModel TEXT,
-CoefficientA REAL,
-CoefficientB REAL,
-CoefficientC REAL,
-FOREIGN KEY (Species, Product) REFERENCES TreeProfile ON DELETE CASCADE
+    RegressionID INTEGER PRIMARY KEY AUTOINCREMENT,
+    Species TEXT,
+    Product INTEGER,
+    LiveDead TEXT,
+    DBHMin REAL,
+    DBHMax REAL,
+    RegressionModel TEXT,
+    CoefficientA REAL,
+    CoefficientB REAL,
+    CoefficientC REAL,
+    FOREIGN KEY (Species, Product, LiveDead) REFERENCES TreeProfile ON DELETE CASCADE
 );";
 
-        public int ID { get; set; }
+        
+        [Key]
+        public int RegressionID { get; set; }
 
         public string Species { get; set; } = "";
 

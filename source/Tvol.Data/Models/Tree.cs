@@ -13,17 +13,23 @@ namespace Tvol.Data
     {
         public static readonly string CREATE_TABLE =
 @"CREATE TABLE Tree (
-TreeID INTEGER PRIMARY KEY AUTOINCREMENT,
-Species TEXT, 
-Product INTEGER, 
-DBH REAL,
-Height REAL,
-FOREIGN KEY (Species, Product) REFERENCES TreeProfile
+    TreeID INTEGER PRIMARY KEY AUTOINCREMENT,
+    Species TEXT, 
+    Product INTEGER,
+    LiveDead TEXT,
+    DBH REAL,
+    Height REAL,
+    CreatedDate DATETIME,
+    ModifiedDate DATETIME,
+    FOREIGN KEY (Species, Product, LiveDead) REFERENCES TreeProfile
 );";
         private string _species = "";
         private int _product = 0;
         private double _dbh = 0.0;
         private double _height = 0.0;
+        private DateTime _createdDate;
+        private DateTime _modifiedDate;
+        private string _liveDead;
 
         [Key]
         public int TreeID { get; set; }
@@ -40,6 +46,12 @@ FOREIGN KEY (Species, Product) REFERENCES TreeProfile
             set { SetValue(ref _product, value); }
         }
 
+        public string LiveDead
+        {
+            get { return _liveDead; }
+            set { SetValue(ref _liveDead, value); }
+        }
+
         public double DBH
         {
             get { return _dbh; }
@@ -50,6 +62,18 @@ FOREIGN KEY (Species, Product) REFERENCES TreeProfile
         {
             get { return _height; }
             set { SetValue(ref _height, value); }
+        }
+
+        public DateTime CreatedDate
+        {
+            get { return _createdDate; }
+            set { SetValue(ref _createdDate, value); }
+        }
+
+        public DateTime ModifiedDate
+        {
+            get { return _modifiedDate; }
+            set { SetValue(ref _modifiedDate, value); }
         }
 
         //TreeProfile _profile;

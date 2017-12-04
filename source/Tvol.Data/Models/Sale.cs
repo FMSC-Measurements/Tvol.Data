@@ -12,6 +12,7 @@ namespace Tvol.Data
 @"CREATE TABLE Sale (
 SaleNumber INTEGER PRIMARY KEY);";
 
+        [ExplicitKey]
         public int SaleNumber { get; set; } = 0;
     }
 }

@@ -1,23 +1,32 @@
 ﻿using Dapper;
 using Microsoft.Data.Sqlite;
-using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Data.Common;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Tvol.Data
 {
     public class TvolDatabase
     {
+        public const int LATEST_DB_VERSION = 1;
 
         //public static string IN_MEMORY_PATH = ":memory:";
 
         public string Path { get; set; }
 
-        public TvolDatabase() { }
+        public int Version
+        {
+            get
+            {
+                using (var conn = OpenConnection())
+                {
+                    var version = conn.ExecuteScalar<int>("PRAGMA schema.USER_VERSION;");
+                    return version;
+                }
+            }
+        }
+
+        public TvolDatabase()
+        {
+        }
 
         public TvolDatabase(string path)
         {
@@ -50,6 +59,10 @@ namespace Tvol.Data
                 conn.Execute(Sale.CREATE_TABLE);
                 conn.Execute(Tree.CREATE_TABLE);
                 conn.Execute(Regression.CREATE_TABLE);
+                conn.Execute(Report.CREAT_TABLE);
+                conn.Execute(Tree_Report.CREATE_TABLE);
+
+                conn.Execute($"PRAGMA schema.user_version = {LATEST_DB_VERSION};");
             }
         }
     }
