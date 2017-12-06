@@ -11,7 +11,7 @@ namespace Tvol.Data
     public class Report
     {
         public static readonly string CREAT_TABLE = 
-@"CREATE TABLE Reports (
+@"CREATE TABLE Report (
     ReportID INTEGER PRIMARY KEY AUTOINCREMENT,
     CreatedDate DATETIME
 );";
