@@ -28,19 +28,30 @@ PRIMARY KEY (Species, Product, LiveDead)
         public string Species
         {
             get { return _species; }
-            set { SetValue(ref _species, value); }
+            set {
+                if (_species == value) return;
+                SetValue(ref _species, value);
+            }
         }
 
         public int Product
         {
             get { return _product; }
-            set { SetValue(ref _product, value); }
+            set
+            {
+                if (_product == value) return;
+                SetValue(ref _product, value);
+            }
         }
 
         public string LiveDead
         {
             get { return _liveDead; }
-            set { SetValue(ref _liveDead, value); }
+            set
+            {
+                if (_liveDead == value) return;
+                SetValue(ref _liveDead, value);
+            }
         }
 
         public override string ToString()
