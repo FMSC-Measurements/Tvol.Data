@@ -20,17 +20,17 @@ namespace Tvol.Data
     {
         public static readonly string CREATE_TABLE =
 @"CREATE TABLE Regression (
-    RegressionID INTEGER PRIMARY KEY AUTOINCREMENT,
-    Species TEXT,
-    Product INTEGER,
-    LiveDead TEXT,
-    DBHMin REAL,
-    DBHMax REAL,
-    RegressionModel TEXT,
-    CoefficientA REAL,
-    CoefficientB REAL,
-    CoefficientC REAL,
-    FOREIGN KEY (Species, Product, LiveDead) REFERENCES TreeProfile ON DELETE CASCADE
+    [RegressionID] INTEGER PRIMARY KEY AUTOINCREMENT,
+    [Species] TEXT,
+    [Product] INTEGER,
+    [LiveDead] TEXT,
+    [DBHMin] REAL,
+    [DBHMax] REAL,
+    [RegressionModel] TEXT,
+    [CoefficientA] REAL,
+    [CoefficientB] REAL,
+    [CoefficientC] REAL,
+    FOREIGN KEY ([Species], [Product], [LiveDead]) REFERENCES TreeProfile ON DELETE CASCADE
 );";
 
         

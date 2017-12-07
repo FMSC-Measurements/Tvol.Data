@@ -13,17 +13,18 @@ namespace Tvol.Data
     {
         public static readonly string CREATE_TABLE =
 @"CREATE TABLE TreeProfile (
-Species TEXT DEFAULT '',
-Product INTEGER DEFAULT -1,
-LiveDead TEXT DEFAULT '',
-PRIMARY KEY (Species, Product, LiveDead)
+[TreeProfileID] INTEGER PRIMARY KEY AUTOINCREMENT,
+[Species] TEXT DEFAULT '',
+[Product] INTEGER DEFAULT -1,
+[LiveDead] TEXT DEFAULT '',
+PRIMARY KEY ([Species], [Product], [LiveDead])
 );";
         private string _species = "";
         private int _product = 0;
         private string _liveDead = "";
 
         [Key]
-        public int RowID { get; set; }
+        public int TreeProfileID { get; set; }
 
         public string Species
         {

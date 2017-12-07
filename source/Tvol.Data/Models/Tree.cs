@@ -13,15 +13,15 @@ namespace Tvol.Data
     {
         public static readonly string CREATE_TABLE =
 @"CREATE TABLE Tree (
-    TreeID INTEGER PRIMARY KEY AUTOINCREMENT,
-    Species TEXT, 
-    Product INTEGER,
-    LiveDead TEXT,
-    DBH REAL,
-    Height REAL,
-    CreatedDate DATETIME,
-    ModifiedDate DATETIME,
-    FOREIGN KEY (Species, Product, LiveDead) REFERENCES TreeProfile
+    [TreeID] INTEGER PRIMARY KEY AUTOINCREMENT,
+    [Species] TEXT, 
+    [Product] INTEGER,
+    [LiveDead] TEXT,
+    [DBH] REAL,
+    [Height] REAL,
+    [CreatedDate] DATETIME,
+    [ModifiedDate] DATETIME,
+    FOREIGN KEY ([Species], [Product], [LiveDead]) REFERENCES TreeProfile
 );";
         private string _species = "";
         private int _product = 0;

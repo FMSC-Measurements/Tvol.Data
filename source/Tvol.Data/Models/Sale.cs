@@ -10,7 +10,7 @@ namespace Tvol.Data
     {
         public static readonly string CREATE_TABLE =
 @"CREATE TABLE Sale (
-SaleNumber INTEGER PRIMARY KEY);";
+[SaleNumber] INTEGER PRIMARY KEY);";
 
         [ExplicitKey]
         public int SaleNumber { get; set; } = 0;
