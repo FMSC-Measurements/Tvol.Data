@@ -1,13 +1,8 @@
 ﻿using Dapper.Contrib.Extensions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Tvol.Data
 {
-    public static class RegressionModel
+    public static class RegressModel
     {
         public const string LINEAR = "Linear";
         public const string QUADRATIC = "Quadratic";
@@ -26,14 +21,15 @@ namespace Tvol.Data
     [LiveDead] TEXT,
     [DBHMin] REAL,
     [DBHMax] REAL,
-    [RegressionModel] TEXT,
+    [RegressModel] TEXT DEFAULT 'Unknown',
     [CoefficientA] REAL,
     [CoefficientB] REAL,
     [CoefficientC] REAL,
+    [Volume] TEXT DEFAULT 'Unknown',
+    [VolType] TEXT DEFAULT 'Unknown',
     FOREIGN KEY ([Species], [Product], [LiveDead]) REFERENCES TreeProfile ON DELETE CASCADE
 );";
 
-        
         [Key]
         public int RegressionID { get; set; }
 
@@ -47,7 +43,7 @@ namespace Tvol.Data
 
         public double DBHMax { get; set; } = 0.0;
 
-        public string RegressionModel { get; set; } = "Unknown";
+        public string RegressModel { get; set; } = "Unknown";
 
         public double CoefficientA { get; set; } = 0.0;
 
@@ -55,5 +51,8 @@ namespace Tvol.Data
 
         public double CoefficientC { get; set; } = 0.0;
 
+        public string Volume { get; set; } = "Unknown";
+
+        public string VolType { get; set; } = "Unknown";
     }
 }
