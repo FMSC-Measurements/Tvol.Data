@@ -62,7 +62,7 @@ namespace Tvol.Data
                 conn.Execute(Report.CREAT_TABLE);
                 conn.Execute(Tree_Report.CREATE_TABLE);
 
-                conn.Execute($"PRAGMA schema.user_version = {LATEST_DB_VERSION};");
+                conn.Execute($"PRAGMA user_version = {LATEST_DB_VERSION};");
             }
         }
     }
