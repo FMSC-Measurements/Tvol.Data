@@ -5,6 +5,7 @@ namespace Tvol.Data
 {
     public static class RegressModel
     {
+        public const string DEFAULT = "Unknown";
         public const string LINEAR = "Linear";
         public const string QUADRATIC = "Quadratic";
         public const string LOG = "Log";
