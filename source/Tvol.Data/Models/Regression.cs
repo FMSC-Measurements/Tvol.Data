@@ -1,4 +1,5 @@
 ﻿using Dapper.Contrib.Extensions;
+using Tvol.Data.Util;
 
 namespace Tvol.Data
 {
@@ -11,7 +12,7 @@ namespace Tvol.Data
     }
 
     [Table(nameof(Regression))]
-    public class Regression
+    public class Regression : INPC_Base
     {
         public static readonly string CREATE_TABLE =
 @"CREATE TABLE Regression (
@@ -30,29 +31,84 @@ namespace Tvol.Data
     FOREIGN KEY ([Species], [Product], [LiveDead]) REFERENCES TreeProfile ON DELETE CASCADE
 );";
 
+        private string _species = "";
+        private int _product = 0;
+        private string _liveDead;
+        private double _dbhMin = 0.0;
+        private double _dbhMax = 0.0;
+        private string _regressModel = "Unknown";
+        private double _coefficientA = 0.0;
+        private double _coefficientB = 0.0;
+        private double _coefficientC = 0.0;
+        private string _volume = "Unknown";
+
         [Key]
         public int RegressionID { get; set; }
 
-        public string Species { get; set; } = "";
+        public string Species
+        {
+            get { return _species; }
+            set { SetValue(ref _species, value); }
+        }
 
-        public int Product { get; set; } = 0;
+        public int Product
+        {
+            get { return _product; }
+            set { SetValue(ref _product, value); }
+        }
 
-        public string LiveDead { get; set; }
+        public string LiveDead
+        {
+            get { return _liveDead; }
+            set { SetValue(ref _liveDead, value); }
+        }
 
-        public double DBHMin { get; set; } = 0.0;
+        public double DBHMin
+        {
+            get { return _dbhMin; }
+            set { SetValue(ref _dbhMin, value); }
+        }
 
-        public double DBHMax { get; set; } = 0.0;
+        public double DBHMax
+        {
+            get { return _dbhMax; }
+            set { SetValue(ref _dbhMax, value); }
+        }
 
-        public string RegressModel { get; set; } = "Unknown";
+        public string RegressModel
+        {
+            get { return _regressModel; }
+            set { SetValue(ref _regressModel, value); }
+        }
 
-        public double CoefficientA { get; set; } = 0.0;
+        public double CoefficientA
+        {
+            get { return _coefficientA; }
+            set { SetValue(ref _coefficientA, value); }
+        }
 
-        public double CoefficientB { get; set; } = 0.0;
+        public double CoefficientB
+        {
+            get { return _coefficientB; }
+            set { SetValue(ref _coefficientB, value); }
+        }
 
-        public double CoefficientC { get; set; } = 0.0;
+        public double CoefficientC
+        {
+            get { return _coefficientC; }
+            set { SetValue(ref _coefficientC, value); }
+        }
 
-        public string Volume { get; set; } = "Unknown";
+        public string Volume
+        {
+            get { return _volume; }
+            set { SetValue(ref _volume, value); }
+        }
 
-        public string VolType { get; set; } = "Unknown";
+        public string VolType
+        {
+            get;
+            set;
+        }
     }
 }
